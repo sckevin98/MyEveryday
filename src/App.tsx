@@ -4,6 +4,8 @@ import { EmptyState } from '@astryxdesign/core/EmptyState';
 import { HabitsScreen } from './features/habits/HabitsScreen';
 import { HabitDetailScreen } from './features/habits/HabitDetailScreen';
 import { SettingsScreen } from './features/settings/SettingsScreen';
+import { StatusBar } from './features/game/StatusBar';
+import { StatusScreen } from './features/game/StatusScreen';
 
 interface Module {
   path: string;
@@ -27,6 +29,10 @@ function ComingSoon({ title }: { title: string }) {
 export default function App() {
   return (
     <div className="app">
+      {/* Level and rank are global, so they sit above every module. */}
+      <header className="app-header">
+        <StatusBar />
+      </header>
       <main className="app-content">
         <Routes>
           <Route path="/" element={<Navigate to="/habits" replace />} />
@@ -35,6 +41,7 @@ export default function App() {
           <Route path="/planner" element={<ComingSoon title="Daily Planner" />} />
           <Route path="/fitness" element={<ComingSoon title="Fitness Tracker" />} />
           <Route path="/nutrition" element={<ComingSoon title="Kalorien Tracker" />} />
+          <Route path="/status" element={<StatusScreen />} />
           <Route path="/settings" element={<SettingsScreen />} />
           <Route path="*" element={<Navigate to="/habits" replace />} />
         </Routes>

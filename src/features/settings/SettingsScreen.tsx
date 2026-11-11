@@ -6,7 +6,7 @@ import { Heading } from '@astryxdesign/core/Heading';
 import { SegmentedControl, SegmentedControlItem } from '@astryxdesign/core/SegmentedControl';
 import { VStack } from '@astryxdesign/core/Stack';
 import { Text } from '@astryxdesign/core/Text';
-import { db, exportBackup, wipeAll } from '../../db';
+import { db, exportBackup, restoreBackup, wipeAll } from '../../db';
 import { isNativeBackup, mergeCsvImport, parseCsv, parseHabitKit, todayKey } from '../habits/lib';
 import { appendHabits, replaceAllHabits } from '../habits/store';
 import { type ColorMode, setColorMode, useColorMode } from '../../shared/colorMode';
@@ -37,7 +37,7 @@ async function importFile(file: File): Promise<string | null> {
   const json = JSON.parse(text);
   if (isNativeBackup(json)) {
     if (!confirm('Alle aktuellen Daten durch dieses Backup ersetzen?')) return null;
-    await replaceAllHabits(json.habits);
+    await restoreBackup(json);
     return `${json.habits.length} Habits wiederhergestellt.`;
   }
   const imported = parseHabitKit(json);

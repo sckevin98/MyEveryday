@@ -6,6 +6,7 @@ Self-built everyday tools that replace paid subscriptions, packaged as one insta
 | Module | Status |
 |---|---|
 | Habit tracker (streaks, heatmap, HabitKit/CSV import) | done |
+| Leveling: XP, area levels, ranks E to S, penalties, daily bonus quests | done |
 | Daily planner | planned |
 | Fitness tracker | planned |
 | Calorie tracker (Open Food Facts, barcode scan) | planned |

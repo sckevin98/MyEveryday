@@ -30,6 +30,20 @@ come from `labels.ts`.
 `habitkit_export.json` in the repo root holds personal data. It is gitignored and the test that
 uses it skips when it is missing.
 
+## Leveling (`src/features/game/`)
+
+One global XP system across all modules. `engine.ts` recomputes everything from raw data on
+each render (habit entries, `bonusDone` rows, `meta['game.startDate']`). No XP totals are
+stored, so the score cannot drift from what was logged, and the engine is fully unit-tested.
+
+- Four areas (Stärke, Vitalität, Geist, Disziplin). Habits map to an area by category through
+  `CATEGORY_AREA`. New modules emit their own events into `computeProgress` and pick an area.
+- Each area has its own level; total XP drives the overall level and the rank (E to S).
+- Mandatory quests are the habits scheduled that day. A missed one costs XP once the day is
+  over; an area never drops below 0, and levels can drop. Bonus quests come from a fixed pool,
+  three per day picked by date seed, and give XP without any penalty.
+- The start date is set on first run, so imported history is never scored.
+
 ## Deploy
 
 Every push to `main` builds and deploys to GitHub Pages (`.github/workflows/deploy.yml`) with
