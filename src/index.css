@@ -1,0 +1,157 @@
+@import '@astryxdesign/core/reset.css';
+@import '@astryxdesign/core/astryx.css';
+@import '@astryxdesign/theme-neutral/theme.css';
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--color-background-body);
+  color: var(--color-text-primary);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Content scrolls, bottom nav stays put; max width keeps it phone-shaped on desktop. */
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.app-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-4);
+  padding-top: calc(var(--spacing-4) + env(safe-area-inset-top, 0px));
+}
+
+.bottom-nav {
+  display: flex;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-background-surface);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.bottom-nav a {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: var(--spacing-2) 0;
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+
+.bottom-nav a.active {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.habit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--spacing-3);
+}
+
+.habit-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: var(--radius-element);
+}
+
+.heatmap-scroll {
+  overflow-x: auto;
+}
+
+.swatch-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+}
+
+.swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.swatch[aria-pressed='true'] {
+  border-color: var(--color-text-primary);
+}
+
+.emoji-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(38px, 1fr));
+  gap: var(--spacing-1);
+}
+
+.emoji-grid button {
+  aspect-ratio: 1;
+  font-size: 18px;
+  border-radius: var(--radius-element);
+  border: 1px solid var(--color-border);
+  background: var(--color-background-surface);
+  cursor: pointer;
+}
+
+.emoji-grid button[aria-pressed='true'] {
+  border-color: var(--color-text-primary);
+  background: var(--color-background-card);
+}
+
+.month-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.month-grid button {
+  aspect-ratio: 1;
+  border-radius: var(--radius-element);
+  border: 1px solid transparent;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--color-text-primary);
+}
+
+.month-grid button:disabled {
+  cursor: default;
+  opacity: 0.35;
+}
+
+.month-grid button.today {
+  border-color: var(--color-text-primary);
+}
+
+.month-grid .weekday {
+  text-align: center;
+  font-size: 11px;
+  color: var(--color-text-secondary);
+}
+
+/* min-width: 0 lets long habit names truncate instead of pushing the check button out. */
+.card-title {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Theme surfaces in dark mode match the card, so empty day cells need a translucent tint to stay visible. */
+:root {
+  --cell-empty: rgba(128, 128, 128, 0.2);
+}

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0c0e"/>
+      <stop offset="1" stop-color="#1a1c20"/>
+    </linearGradient>
+    <linearGradient id="flameOuter" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0" stop-color="#fb923c"/>
+      <stop offset="0.55" stop-color="#f97316"/>
+      <stop offset="1" stop-color="#c2410c"/>
+    </linearGradient>
+    <linearGradient id="flameInner" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0" stop-color="#fde68a"/>
+      <stop offset="0.6" stop-color="#fbbf24"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <!-- Outer flame -->
+  <path fill="url(#flameOuter)" d="M 256 48
+        C 303 114, 370 180, 370 275
+        C 370 360, 313 436, 256 436
+        C 199 436, 142 360, 142 275
+        C 142 180, 208 114, 256 48 Z"/>
+  <!-- Inner highlight -->
+  <path fill="url(#flameInner)" d="M 256 240
+        C 284 265, 313 303, 303 350
+        C 294 398, 265 417, 256 417
+        C 247 417, 218 398, 209 350
+        C 199 303, 228 265, 256 240 Z"/>
+</svg>
